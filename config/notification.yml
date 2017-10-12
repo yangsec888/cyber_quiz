@@ -1,0 +1,17 @@
+# Cyber_quiz Notification Lists
+#
+default: &default
+  cyber_level_1_due: ["yangli@ny.cmbchina.com", "KainanZhang@ny.cmbchina.com"]
+
+
+# Development environment
+development:
+  <<: *default
+
+# Test environment
+test:
+  <<: *default
+
+# Production environment
+production:
+  <<: *default

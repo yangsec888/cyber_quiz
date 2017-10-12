@@ -1,0 +1,24 @@
+<table class="table">
+  <tr>
+    <td>
+      <div class="tab-content col-md-9 col-lg-9">
+         <div>
+           <% data = String.new %>
+           <% map = File.open(@list_file, 'r+') %>
+           <% map.each_line { |line|  data += line }; map.close%>
+           <h4>Use file to synchronize candidate database </h4>
+            <p>
+              <%= form_tag "/reporter/save" do %>
+              <%= text_area_tag :file_tag, data, rows: 22, cols: 80 %>
+              <br>
+              <div>
+                <button class="btn btn-default" type="submit">Save</button>
+                <%= link_to "Synchronize", candidates_synchronize_path, class: "btn btn-warning", onclick: "alert('Sure to reset?')" %>
+              </div>
+              <% end %>
+            </p>
+         </div>
+      </div>
+    </td>
+  </tr>
+</table>

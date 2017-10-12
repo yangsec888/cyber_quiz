@@ -1,0 +1,46 @@
+<h1>Quiz Records</h1>
+<div align="left">
+    <%= form_tag reporter_index_path, :method => 'get' do %>
+    <p>
+        <%= text_field_tag :name, params[:name], placeholder: 'Name'%> AND/OR
+        <%= select(:category, nil, Question.distinct.pluck(:category), {:include_blank =>"Category"},
+      	 {class: "select-style"}) %>
+        <%= submit_tag "Search", :name => nil %>
+    </p>
+    <% end %>
+</div>
+<hr class="style1">
+<div class="table-responsive col-md-12 col-lg-12">
+    <table class="table table-striped" style='width:1000px'>
+        <tr>
+            <th><%= sortable "candidate", "Candidate" %></th>
+            <th>Email</th>
+            <th>Category</th>
+            <th>Eventid</th>
+            <th><%= sortable "quiz_score", "Score" %></th>
+            <th><%= sortable "updated_at", "Date" %></th>
+        </tr>
+    <% if @records.empty? %>
+        <tr>
+            <td colspan=8 align=center><%= "No Record To Show" %></td>
+        </tr>
+    <% else %>
+        <% for record in @records do%>
+        <tr>
+            <td><%= record.candidate %></td>
+            <td><a href=mailto:<%= record.candidate_email %>><%= record.candidate_email %></a></td>
+            <td><%= record.quiz_category %></td>
+            <td><%= record.quiz_eventid %></td>
+            <td><%= record.quiz_score %></td>
+            <td><%= record.created_at %></td>
+        <% end %>
+    <% end %>
+    </table>
+</div>
+<div class="flickr_pagination">
+    <%= will_paginate @records %>
+    <div class="page_info">
+      <%= page_entries_info @records%>
+    </div>
+</div>
+<%= link_to "Back", questions_path, class: "btn btn-default"%>

@@ -1,0 +1,41 @@
+<!--
+# ITESM CEM, May 11, 2011.
+# Ruby Source File
+# Activity::  Final Project: Design Patterns Quiz App
+# Author::    1165536 Juliana Pena
+-->
+
+<h1>Question <%= @current + 1 %> of <%= @total %></h1>
+<p id="question"><%= @question.text %></p>
+
+<div class="feedback-choices">
+  <% @choices.each do |choice| %>
+	 <% if choice.correct && choice == @choice %>
+   <p class="feedback-choices correct"><span class="glyphicon glyphicon-ok"></span>
+	 <% elsif choice == @choice %>
+		<p class="feedback-choices incorrect"><span class="glyphicon glyphicon-remove"></span>
+	 <% else %>
+		<p class="feedback-choices ">
+	 <% end %>
+		<%= choice.text %>
+	 </p>
+  <% end %>
+</div>
+
+<p class="feedback">
+  <% if @correct %>
+	 <strong><font color="green">Correct!</font></strong>
+  <% else %>
+	 <strong><font color="red">Incorrect.</font></strong>
+  <% end %>
+</p>
+
+<%= form_tag({:controller => "quiz", :action => "question"}) do %>
+  <div class="center">
+	 <%= submit_tag("Continue", :class => "submit") %>
+  </div>
+<% end %>
+
+<% content_for(:title) do %>
+  Question <%= @current + 1 %> of <%= @total %>
+<% end %>

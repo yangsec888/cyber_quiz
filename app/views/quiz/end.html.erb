@@ -1,0 +1,38 @@
+<!--
+# ITESM CEM, May 11, 2011.
+# Ruby Source File
+# Activity::  Final Project: Design Patterns Quiz App
+# Author::    1165536 Juliana Pena
+-->
+
+<h1>Quiz Results</h1>
+<p id="question">You answered correctly <%= @correct %> out of <%= @total %> questions.</p>
+
+<p id="score">Your score is <%= @score %>.</p>
+<% content_for(:title) do %>
+  Quiz Results
+<% end %>
+
+<% if @score>=@pass_line %>
+  <div class="notice-success">
+	Congratulations, you passed the quiz! Please choose your name and submit the score:
+  <%= form_tag({:controller => "reporter", :action => "create"}, :method => "post", :style =>"display: inline;") do %>
+    <%= hidden_field_tag :score, @score %>
+    <%= hidden_field_tag :quiz_category, @quiz_category %>
+    &nbsp;&nbsp;&nbsp;<%= select(:name, nil, Candidate.where(status: true).pluck(:name).sort, :id => "name", :required => true) %>
+    &nbsp;&nbsp;&nbsp;<%= submit_tag("Submit", :class => "btn btn-default", :onclick => "return confirm ('Are you sure?')" )%>
+  <% end %>
+  </div>
+<% else %>
+  <div class="notice-fail">
+    Sorry, you need to get a score of <%= @pass_line %> or higher to pass the quiz, please try again:
+<!--
+  <%= form_tag({:controller => "quiz", :action => "index"}, :method => "get",  :style =>"display: inline;") do %>
+    &nbsp;&nbsp;&nbsp;<%= submit_tag("Take another quiz", :class => "btn btn-default") %>
+  <% end %>
+-->
+<%= form_tag({:controller => "quiz", :action => "start"}, :style =>"display: inline;") do %>
+    <%= submit_tag "Start the Quiz!", :class => "btn btn-danger"%>
+<% end %>
+  </div>
+<% end %>

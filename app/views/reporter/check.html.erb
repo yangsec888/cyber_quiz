@@ -1,0 +1,60 @@
+<script>
+$(document).ready(function () {
+  $('*:not(.bootstrap-select) > .selectpicker').selectpicker('refresh');
+});
+
+function toggle(source) {
+    checkboxes = document.getElementsByName('email[]');
+    for (var i = 0, n = checkboxes.length; i < n; i++) {
+        checkboxes[i].checked = source.checked;
+    }
+};
+</script>
+
+<h1>Check Unrecorded Users</h1>
+
+<%= form_tag({:controller => "reporter", :action => "check"}, :method => 'get') do %>
+  	Category: <%= select(:category, nil, Question.distinct.pluck(:category), {:include_blank =>false},
+  	 {:class => "selectpicker", "data-style" => "btn-default", required: true}) %>
+     &nbsp;
+    EventId: <%= select(:eventid, nil, Reporter.distinct.pluck(:quiz_eventid), {:include_blank =>false},
+   	 {:class => "selectpicker", "data-style" => "btn-default", required: true}) %>
+  	<%= submit_tag "Check", :class => "btn btn-default"%>
+<% end %>
+<hr class="style1">
+<div class="table-responsive col-md-12 col-lg-12">
+    <br/>
+    <table class="table table-striped" style='width:1000px'>
+        <tr>
+            <th><%= sortable "candidate", "Candidate" %></th>
+            <th>Email</th>
+            <th>Status</th>
+            <th><input type="checkbox" onClick="toggle(this)"> Notice All (<%=@candidate_list.size %>)</th>
+        </tr>
+    <% if @candidate_list.empty? %>
+        <tr>
+            <td colspan=8 align=center><%= "No Record To Show" %></td>
+        </tr>
+    <% else %>
+        <% for candidate in @candidate_list do%>
+        <tr>
+            <td><%= candidate[0] %></td>
+            <td><%= candidate[1][0] %></td>
+            <td><%= if candidate[1][1]
+                      'Active'
+                    else
+                      'Inactive'
+                    end
+               %></td>
+            <td><%= check_box_tag 'email[]', candidate[1] %></td>
+        <tr>
+        <% end %>
+    <% end %>
+    </table>
+</div>
+<br/>
+<div class="row"></div>
+<div>
+<%= link_to "Back", questions_path, class: "btn btn-default"%>&nbsp;
+<%= link_to "Upload", reporter_list_path, class: "btn btn-warning"%>
+</div>

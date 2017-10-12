@@ -1,0 +1,24 @@
+<% if !@doc.errors.empty? %>
+   <div class="alert alert-warning">
+      <ul>
+         <% @doc.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+         <% end %>
+      </ul>
+   </div>
+<% end %>
+
+<div class = "well">
+  <h3> Upload your document </h3>
+   <%= form_for @doc, html: { multipart: true } do |f| %>
+   <div class="form-group">
+      <%= f.label :name %><br/>
+      <%= f.text_field :name, style: "width: 300px;", placeholder: "Leave blank to keep the original filename"%>
+   </div>
+   <div class="form-group">
+      <%= f.label :attachment %>
+      <%= f.file_field :attachment %>
+   </div>
+      <%= f.submit "Save", class: "btn btn-primary" %>
+   <% end %>
+</div>

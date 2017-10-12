@@ -1,0 +1,54 @@
+//colors
+$color_christi_approx: #67b11c;
+$color_green_leaf_approx: #467813;
+$red: #ff0000;
+$color_dark_tan_approx: #610b0b;
+$white: #fff;
+
+//fonts
+$font_0: Helvetica Neue;
+$font_1: Helvetica;
+$font_2: Arial;
+$font_3: sans-serif;
+
+//urls
+$url_0: url(tick.png);
+$url_1: url(cross.png);
+
+
+.notice-success {
+	//background: $color_christi_approx $url_0 10px 50% no-repeat;
+	background: white $url_0 10px 50% no-repeat;
+	background-size: 3%;
+	border: 5px solid $color_green_leaf_approx;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+	//color: $white;
+	color: green;
+	font-family: $font_0, $font_1, $font_2, $font_3;
+	padding: 15px 20px 15px 50px;
+}
+
+.notice-fail {
+	//background: $red $url_1 10px 50% no-repeat; size: 10%;
+	background: white $url_1 10px 50% no-repeat;
+	background-size: 3%;
+	border: 5px solid $color_dark_tan_approx;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+	//color: $white;
+	color: red;
+	font-family: $font_0, $font_1, $font_2, $font_3;
+	padding: 15px 20px 15px 50px;
+}
+
+.feedback-choices{
+}
+.feedback-choices .correct {
+	color: green;
+	font-weight: bolder;
+}
+.feedback-choices .incorrect {
+	color: red;
+	font-weight: bolder;
+}

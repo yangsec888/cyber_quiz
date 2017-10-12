@@ -1,0 +1,64 @@
+
+<!-- http://bootsnipp.com/snippets/featured/accordion-menu -->
+<div class="row">
+    <div class="col-sm-5 col-md-5">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
+                        </span> Menu</a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                          <td>
+                            <span class="glyphicon glyphicon-flash text-success"></span>
+                            <%= link_to 'New Question', new_question_path %>
+                          </td>
+                        </tr>
+                        <tr>
+                         <td>
+                          <span class="glyphicon glyphicon-flash text-success"></span>
+                          <a data-toggle="collapse" data-parent="#collapseTwo" href="#collapseThree">Questions List</a>
+                          <div id="collapseThree" class="panel-collapse collapse">
+                            <div class="panel-body">
+                              <table class="table">
+                                <% Question.distinct.pluck(:category).each do |category| %>
+                                  <tr>
+                                    <td>
+                                    <span class="glyphicon glyphicon-pencil text-info"></span>
+                                    <%= link_to "#{category}", questions_list_path(category: category), method: :get %>
+                                  </td>
+                                  </tr>
+                                <% end %>
+                              </table>
+                            </div>
+                          </div>
+                        </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="glyphicon glyphicon-flash text-success"></span>
+                            <%= link_to 'Quiz Records', reporter_index_path%>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="glyphicon glyphicon-flash text-success"></span>
+                            <%= link_to 'Candidate Check', reporter_check_path(category: [""], eventid: [""])%>
+                          </td>
+                        </tr>
+                    </table>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-10 col-md-10">
+      <div id="content-area">
+      </div>
+    </div>
+</div>

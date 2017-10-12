@@ -1,0 +1,40 @@
+<h1>Listing questions</h1>
+
+<p>Total: <%= @questions.size %></p>
+
+<table border="1">
+  <tr>
+    <th>ID </th>
+    <th>Category </th>
+    <th>Text</th>
+    <th>Choices</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @questions.each do |question| %>
+  <tr>
+    <td><%= question.id %> </td>
+    <td><%= question.category %> </td>
+    <td><%= question.text %></td>
+    <td>
+      <ul>
+        <% question.choices.each do |choice| %>
+          <li>
+            <%= choice.text %>
+            <% if choice.correct %> (Correct) <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </td>
+    <td><%= link_to 'Show', question %></td>
+    <td><%= link_to 'Edit', edit_question_path(question) %></td>
+    <td><%= button_to 'Delete', question_path(question.id), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<% content_for(:title) do %>
+  All Questions
+<% end %>
