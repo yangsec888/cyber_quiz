@@ -13,3 +13,4 @@ Rails.application.config.assets.paths << '#{Rails.root}/app/assets/stylesheets'
 #  go_contact_before_signin.js user_status_reports.js on_boardings.js off_boardings.js internal_transfer.js loa.js\
 #  jstree.css)
 Rails.application.config.assets.precompile += %w( all.css )
+Rails.application.config.assets.precompile += %w( Jcrop.css Jcrop.js Jcrop.gif )

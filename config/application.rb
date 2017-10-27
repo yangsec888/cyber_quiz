@@ -1,8 +1,3 @@
-# ITESM CEM, May 11, 2011.
-# Ruby Source File
-# Activity::  Final Project: Design Patterns Quiz App
-# Author::    1165536 Juliana Pena
-
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -13,8 +8,7 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Quizapp
   class Application < Rails::Application
-
-    #config.api_only = true
+    # config.api_only = true
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -41,7 +35,7 @@ module Quizapp
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
 
     # Configure the default encoding used in templates for Ruby 1.9.
-    config.encoding = "utf-8"
+    config.encoding = 'utf-8'
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]

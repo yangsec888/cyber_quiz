@@ -1,5 +1,5 @@
 .jumbotron{
-	background-image: url('/images/ho_building.jpg'); 
+	background-image: url('/images/quiz_background.jpg');
 	background-size: 100%;
 }
 
@@ -9,18 +9,21 @@
     border-collapse: separate;
     border-spacing: 0 5px; /* this is the ultimate fix */
 }
+
 .spacing-table th {
     text-align: left;
     padding: 5px 15px;
 }
-.spacing-table td {
 
+.spacing-table td {
     padding: 5px 15px;
 }
+
 .spacing-table td:first-child {
     border-left-width: 3px;
     border-radius: 5px 0 0 5px;
 }
+
 .spacing-table td:last-child {
     border-right-width: 3px;
     border-radius: 0 5px 5px 0;

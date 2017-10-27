@@ -1,0 +1,21 @@
+<%= form_for @trainer, html: { multipart: true } do |f| %>
+  <% if @trainer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trainer.errors.count, "error") %> prohibited this trainer from being saved:</h2>
+
+      <ul>
+      <% @trainer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+<%= bootstrap_form_for(@trainer, html: {multipart: true}) do |f| %>
+    <%= f.text_field :name, required: true%>
+    <%= f.email_field :email, required: true%>
+    <%= f.phone_field :phone, required: true%>
+    <%= f.text_area :description, rows: "2" , required: true%>
+    <%= f.submit :submit %>
+<% end %>

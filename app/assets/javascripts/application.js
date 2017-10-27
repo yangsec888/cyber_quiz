@@ -5,6 +5,7 @@
 //= require bootstrap-select
 //= require bootstrap/alert
 //= require bootstrap/dropdown
+//= require jquery.validate
 //= require_tree .
 
 var jumboHeight = $('.jumbotron').outerHeight();

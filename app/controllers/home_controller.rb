@@ -14,7 +14,7 @@ class HomeController < ApplicationController
   end
 
   def support_contact
-
+    @trainers = Trainer.all
   end
 
 end

@@ -21,7 +21,7 @@
   <div class='col-sm-12'>
     <div id='flash'>
       <% flash.each do |key, value| %>
-        <div class='flash alert-temp alert alert-dismissible fade in alert-<%= key == 'notice' ? 'info' : 'danger' %>'>
+        <div class='flash alert-temp alert alert-dismissible fade in alert-<%= key == 'notice' ? 'info' : 'danger'%>'>
           <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
             <span aria-hidden='true'>&times;</span>
           </button>
@@ -34,8 +34,13 @@
 <% end %>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-        <%= link_to image_tag('cmb_logo.png', size: "190x60"), 'https://us.cmbchina.com/', id: "logo" %>
-        <%= link_to image_tag('cyber_quiz.png', size: "150x60"), root_path, id: "logo" %>
+          <%= image_tag('/uploads/trainer/default.png'+'?'+DateTime.now.strftime('%s'), size: "150x60", id: "logo")%>
+          <% if File.exist?('public/uploads/trainer/logo_crop.png') %>
+            <%= image_tag('/uploads/trainer/logo_crop.png'+'?'+DateTime.now.strftime('%s'), size: "150x60", id: "logo")%>
+          <%elsif File.exist?('public/uploads/trainer/logo.png')%>
+            <%= image_tag('/uploads/trainer/logo.png'+'?'+DateTime.now.strftime('%s'), size: "150x60", id: "logo")%>
+          <% else %>
+          <% end %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home", root_path %></li>
@@ -55,4 +60,6 @@
       <%= render 'layouts/footer' %>
     </div>
   </body>
+  <%= debug(params)if Rails.env.development? %>
+  <%= params.inspect if Rails.env.development? %>
 </html>

@@ -45,7 +45,7 @@ class CandidatesController < ApplicationController
     end
     redirect_to reporter_list_path, notice: 'The list file has been synchronized.'
   rescue
-    redirect_to reporter_list_path, warning: 'Synchronization failed, please check candidate file.'
+    redirect_to reporter_list_path, alert: 'Synchronization failed, please check candidate file.'
   end
 
   def refresh

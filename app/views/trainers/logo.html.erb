@@ -1,0 +1,51 @@
+<meta http-equiv="Cache-control" content="no-cache">
+<script>
+    function Crop() {
+        var w = 1000;
+        var h = 700;
+        // Fixes dual-screen position Most browsers Firefox
+        var dualScreenLeft = window.screenLeft != undefined
+            ? window.screenLeft
+            : screen.left;
+        var dualScreenTop = window.screenTop != undefined
+            ? window.screenTop
+            : screen.top;
+        width = window.innerWidth
+            ? window.innerWidth
+            : document.documentElement.clientWidth
+                ? document.documentElement.clientWidth
+                : screen.width;
+        height = window.innerHeight
+            ? window.innerHeight
+            : document.documentElement.clientHeight
+                ? document.documentElement.clientHeight
+                : screen.height;
+
+        //var image = document.getElementById('logo');
+        var id = document.getElementById('id').value;
+        var url = "/trainers/"+id+"/crop";
+        //var url = "/go_uploads/show?image="+
+        var left = ((width / 2) - (w / 2)) + dualScreenLeft;
+        var top = ((height / 2) - (h / 2)) + dualScreenTop;
+        var newWindow = window.open(url, 'CROP', 'width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+
+        // Puts focus on the newWindow
+        if (window.focus) {
+            newWindow.focus();
+        }
+    }
+</script>
+<h1>Upload Your Logo </h1>
+<div class="container">
+<%= bootstrap_form_for(@trainer, html: {multipart: true}) do |f| %>
+<%= f.hidden_field :id, id:'id'%>
+<%= f.file_field :logo, help: 'png format preferred.', required: true%>
+    <% if f.object.logo? %>
+    <%= image_tag(f.object.logo.url+'?'+DateTime.now.strftime('%s'), id: 'logo', size: '600x240', onclick: 'Crop()', style: ' cursor: pointer;', title: 'click_to_crop')%>
+    </br>
+    <%= link_to 'Remove Logo', action: "remove_logo", id: f.object.id%>
+    <% end %>
+</br>
+    <%= f.submit :submit %>
+<% end %>
+</div>

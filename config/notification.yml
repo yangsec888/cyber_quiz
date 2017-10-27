@@ -1,7 +1,7 @@
 # Cyber_quiz Notification Lists
 #
 default: &default
-  cyber_level_1_due: ["yangli@ny.cmbchina.com", "KainanZhang@ny.cmbchina.com"]
+  cyber_level_1_due: ["", ""]
 
 
 # Development environment

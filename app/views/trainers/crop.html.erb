@@ -1,0 +1,33 @@
+<meta http-equiv="Cache-control" content="no-cache">
+<%= stylesheet_link_tag "Jcrop.css" %>
+<%= javascript_include_tag 'Jcrop.js' %>
+<script type="text/javascript">
+    $(function () {
+        $('#cropbox').Jcrop({
+            onChange: update_crop,
+            onSelect: update_crop,
+            bgColor : '',
+            boxWidth: 500, boxHeight: 500,
+        });
+    });
+
+    function update_crop(coords) {
+        $('#crop_x').val(coords.x);
+        $('#crop_y').val(coords.y);
+        $('#crop_w').val(coords.w);
+        $('#crop_h').val(coords.h);
+    }
+</script>
+
+<h3>
+    Crop your logo
+</h3>
+<%= image_tag('/uploads/trainer/logo_crop.png?'+ DateTime.now.strftime('%s'), id: "cropbox")%>
+<%= form_for @trainer, url:{action: "cropped_image", path: URI.parse(URI.encode(@path2))}, method: :post do |form| %>
+<% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
+<%= form.hidden_field attribute, :id => attribute %>
+<% end %>
+<p><%= form.submit "Crop" %></p>
+<% end %>
+
+<span class="glyphicon glyphicon-step-backward"><%=link_to 'Back', url_for(trainers_logo_path) %></span>

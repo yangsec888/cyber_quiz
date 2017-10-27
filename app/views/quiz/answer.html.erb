@@ -1,28 +1,25 @@
-<!--
-# ITESM CEM, May 11, 2011.
-# Ruby Source File
-# Activity::  Final Project: Design Patterns Quiz App
-# Author::    1165536 Juliana Pena
--->
-
 <h1>Question <%= @current + 1 %> of <%= @total %></h1>
 <p id="question"><%= @question.text %></p>
 
 <div class="feedback-choices">
+  <% index = 65 %>
   <% @choices.each do |choice| %>
-	 <% if choice.correct && choice == @choice %>
+	 <%#if choice.correct && choice == @choice %>
+   <% if choice.correct && @answer_array.include?(choice.id.to_s)%>
    <p class="feedback-choices correct"><span class="glyphicon glyphicon-ok"></span>
-	 <% elsif choice == @choice %>
+	 <% elsif @answer_array.include?(choice.id.to_s) %>
 		<p class="feedback-choices incorrect"><span class="glyphicon glyphicon-remove"></span>
 	 <% else %>
 		<p class="feedback-choices ">
 	 <% end %>
-		<%= choice.text %>
+		<%= index.chr+'. '+choice.text %>
 	 </p>
+    <% index += 1 %>
   <% end %>
 </div>
 
 <p class="feedback">
+  Your Answer Is
   <% if @correct %>
 	 <strong><font color="green">Correct!</font></strong>
   <% else %>

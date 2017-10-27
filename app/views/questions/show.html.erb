@@ -1,51 +1,63 @@
-<!--
-# ITESM CEM, May 11, 2011.
-# Ruby Source File
-# Activity::  Final Project: Design Patterns Quiz App
-# Authors::   1165536 Juliana Pena
--->
+<div class='container'>
+  <h1>
+    Questions Details
+  </h1>
+  <table class='table table-bordered'>
+    <thead class="thead-default">
+      <tr class="bg-info">
+        <th class="col-md-2">Question</th>
+        <th class="col-md-9"><%= @question.text %></th>
+        <th class="col-md-1"></th>
+      </tr>
+      <% if @question.choices.empty? %>
+      <tr>
+        <td colspan="12">
+          Please add choice to the question.
+        </td>
+      </tr>
+    <% else
+    @question.choices.each_with_index do |choice, index| %>
+      <tr>
+        <td>
+          <%= index+1 %>
+        </td>
+        <td>
+          <%= choice.text %>
+          <% if choice.correct %>
+          (Correct)
+          <% end %>
+        </td>
+        <td>
+          <%= form_tag({:controller => "choices", :action => "destroy"}) do %>
+          <%= hidden_field_tag :question, @question.id %>
+          <%= hidden_field_tag :choice, choice.id %>
+          <%= submit_tag "Delete" %>
+          <% end %>
+        </td>
+        <% end %>
+        <% end %>
+      </table>
 
-<p id="notice"><%= notice %></p>
+      <h3>Add New Choice</h3>
+      <%= form_tag({:controller => "choices", :action => "create"}, class: "form-horizontal") do %>
+        <%= hidden_field_tag :question, @question.id %>
+        <div class="form-group row">
+          <label for="text" class="col-2 col-form-label">Choice</label>
+          <div class="col-10">
+            <%= text_area_tag :text, nil, size: "100x5"%>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= check_box_tag :correct%>
+          <%= label_tag :correct, "correct"%>
+          <%= submit_tag "Create"%>
+        </div>
+      <% end %>
 
-<p>
-  <b>Text:</b>
-  <%= @question.text %>
-</p>
+      <%= link_to 'Edit', edit_question_path(@question) %>|
+      <%= link_to 'Back', new_question_path %>
 
-<h4>Choices</h4>
-<ul>
-  <% @question.choices.each do |choice| %>
-	 <li>
-		<%= choice.text %>
-		<% if choice.correct %> (Correct) <% end %>
-
-		<%= form_tag({:controller => "choices", :action => "destroy"}) do %>
-		  <%= hidden_field_tag :question, @question.id %>
-		  <%= hidden_field_tag :choice, choice.id %>
-		  <%= submit_tag "Delete" %>
-		<% end %>
-
-	 </li>
-  <% end %>
-</ul>
-
-<h5>New Choice</h5>
-<%= form_tag({:controller => "choices", :action => "create"}) do %>
-  <%= hidden_field_tag :question, @question.id %>
-
-  <%= label_tag :text, "Text" %><br />
-  <%= text_field_tag :text %>
-  <br />
-  <%= check_box_tag :correct %>
-  <%= label_tag :correct, "Correct" %>
-  <br />
-  <%= submit_tag "Create" %>
-<% end %>
-
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', new_question_path %>
-
-<% content_for(:title) do %>
-  Question Details
-<% end %>
+      <% content_for(:title) do %>
+      Question Details
+      <% end %>
+    </div>

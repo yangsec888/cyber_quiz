@@ -1,0 +1,39 @@
+<script>
+$(document).ready(function() {
+    $("#setting_form").validate({ // initialize the plugin
+      rules: {
+        questions: {
+          required: true,
+          min: 1
+        },
+        passline: {
+          required: true,
+          min: 0,
+          max: 100
+        }
+      },
+      messages: {
+        passline: "Please enter a valid number",
+        questions: "At least 1 question."
+      },
+      // Make sure the form is submitted to the destination defined in the "action" attribute of the form when valid
+    });
+    console.log($("#setting_form").valid());
+});
+</script>
+
+<h1>Current Setting</h1>
+<%= bootstrap_form_tag(url: '/questions/save_setting', layout: :horizontal, label_col: "col-md-4", html: {id: 'setting_form'}) do |f| %>
+<%= f.text_field :name, label: "Event name", control_col: "col-md-4",
+                 value: @setting['event'][:name], required: true%>
+<%= f.date_select :date, label: "Dateline", control_col: "col-md-4",
+                 value: @setting['event'][:date],required:true%>
+<%= f.number_field :questions, label: "How many questions are in the test?", value: @setting['event'][:questions],
+                    control_col: "col-md-4", required: true, help:'Number will not exceed the total amount.'%>
+<%= f.number_field :passline, label: "What is the minimum score(percentage) to pass?", value: @setting['event'][:passline],
+                    control_col: "col-md-4", required: true, help:'between 0 and 100'%>
+<div class="text-right">
+  <%= f.submit :save, id: 'submit'%>
+</div>
+
+<% end %>

@@ -7,9 +7,8 @@
 #
 default: &default
   username: admin
-  password: owasprock    # minimum 8 chars
-  email: yang.li@owasp.org
-
+  password: 3*l2LMb@!#153    # minimum 8 chars
+  email: admin@test.com
 
 # Development environment
 development:

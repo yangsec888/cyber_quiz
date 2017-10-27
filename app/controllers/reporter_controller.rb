@@ -34,10 +34,12 @@ class ReporterController < ApplicationController
     @record = Reporter.new
     @record.candidate = params[:name][0]
     @record.candidate_email = @candidate_list[params[:name][0]][0]
-    @record.quiz_eventid = @event
+    @record.quiz_eventid = @event['event'][:name]
     @record.quiz_category = params[:quiz_category]
     @record.quiz_score = params[:score]
     @record.save
+    reset_session
+    session.delete(session[:user_id])
     redirect_to root_url, notice: 'Record saved!'
   end
 

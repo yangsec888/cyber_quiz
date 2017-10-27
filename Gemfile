@@ -1,5 +1,4 @@
 source 'http://rubygems.org'
-
 #gem 'rails' #, '3.0.5'
 # cyber_quiz specific rails dependency below
 gem 'rails', '~> 4.2.8'
@@ -74,4 +73,7 @@ gem 'json'
 
 gem 'bootstrap-select-rails'
 gem 'will_paginate', '~> 3.1.0'
-
+gem 'mini_magick'
+gem 'bootstrap_form'
+gem 'rails_12factor'
+gem 'jquery-validation-rails'

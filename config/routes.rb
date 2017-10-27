@@ -1,10 +1,4 @@
-# ITESM CEM, May 11, 2011.
-# Ruby Source File
-# Activity::  Final Project: Design Patterns Quiz App
-# Author::    1165536 Juliana Pena
-
 Quizapp::Application.routes.draw do
-
   devise_for :users
   devise_scope :user do
     get 'users/list' => 'users#index'
@@ -14,7 +8,13 @@ Quizapp::Application.routes.draw do
   end
   resources :users
 
-  resources :documents, only: [:index, :new, :create, :destroy]
+  get 'trainers/logo' => 'trainers#logo', :via => :get
+  resources :trainers
+  get 'trainers/:id/crop' => 'trainers#crop'
+  post 'trainers/:id/cropped_image' => 'trainers#cropped_image'
+  get 'trainers/:id/remove_logo' => 'trainers#remove_logo'
+
+  resources :documents, only: %i[index new create destroy]
 
   get 'documents/index'
 
@@ -24,49 +24,50 @@ Quizapp::Application.routes.draw do
 
   get 'documents/destroy'
 
-  root "home#page"
+  root 'home#page'
 
-  get "home/page"
+  get 'home/page'
 
-  get "home/support_contact"
+  get 'home/support_contact'
 
-  get "home/about"
+  get 'home/about'
 
-  get "questions/list"
-
+  get 'questions/list'
+  get 'questions/setting' => 'questions#setting', :via => :get
+  post 'questions/save_setting' => 'questions#save_setting', :via => :post
   resources :questions
 
-  get "quiz/index"
+  get 'quiz/index'
 
-  post "quiz/start"
+  post 'quiz/start'
 
-  get "quiz/question"
+  get 'quiz/question'
 
-  post "quiz/question"
+  post 'quiz/question'
 
-  post "quiz/answer"
+  post 'quiz/answer'
 
-  get "quiz/end"
+  get 'quiz/result'
 
-  post "choices/create"
+  post 'choices/create'
 
-  post "choices/destroy"
+  post 'choices/destroy'
 
-  post "reporter/create"
+  post 'reporter/create'
 
-  get "reporter/index"
+  get 'reporter/index'
 
-  get "reporter/check"
+  get 'reporter/check'
 
-  get "reporter/list"
+  get 'reporter/list'
 
-  post "reporter/save"
+  post 'reporter/save'
 
   resource :candidates
 
-  get "candidates/synchronize"
+  get 'candidates/synchronize'
 
-  post "candidates/refresh"
+  post 'candidates/refresh'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

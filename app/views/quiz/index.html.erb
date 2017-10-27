@@ -1,27 +1,18 @@
-<!--
-# ITESM CEM, May 11, 2011.
-# Ruby Source File
-# Activity::  Final Project: Design Patterns Quiz App
-# Author::    1165536 Juliana Pena
--->
-<!--
 <script>
 $(document).ready(function () {
     $('.selectpicker').selectpicker();
 });
 </script>
 
-
-<h1>Start Quiz</h1>
+<h1>Choose Category</h1>
 
 <%= form_tag({:controller => "quiz", :action => "start"}) do %>
-  	<p><%= label_tag(:category, "Choose Question's Category", :id => "question") %></p>
+  	<p><%= label_tag(:category, "Please Choose Question's Category", :id => "question") %></p>
   	<p><%= select(:category, nil, Question.distinct.pluck(:category), {:include_blank =>false},
-  	 {:class => "selectpicker", "data-style" => "btn-primary", required: true }) %> <br /></p>
-  	<%= submit_tag "Start!", :class => "btn btn-default"%>
+  	 {:class => "selectpicker", required: true }) %> <br /></p>
+  	<%= submit_tag "Continue"%>
 <% end %>
 
 <% content_for(:title) do %>
   Start Quiz
 <% end %>
--->

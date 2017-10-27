@@ -1,26 +1,50 @@
-<!--
-# ITESM CEM, May 11, 2011.
-# Ruby Source File
-# Activity::  Final Project: Design Patterns Quiz App
-# Author::    1165536 Juliana Pena
--->
+<script>
+  $(document).ready(function () {
+    var requiredCheckboxes = $(':checkbox[required]');
+    var ans_amount = $('#ans_amount').val()
+    requiredCheckboxes.on('change', function (e) {
+      var checkboxGroup = requiredCheckboxes.filter('[name="' + $(this).attr('name') + '"]:checked');
+      //alert(checkboxGroup.length)
+      if (checkboxGroup.length == ans_amount){
+        requiredCheckboxes.prop('required', false);
+      }else if (checkboxGroup.length > ans_amount) {
+        alert('Please choose only ' + ans_amount + ' options.' );
+        requiredCheckboxes.prop('required', true);
+      }else {
+        requiredCheckboxes.prop('required', true);
+      }
+    });
+  });
+</script>
 
-<h1>Question <%= @current + 1 %> of <%= @total %></h1>
+<h1>Question
+  <%= @current + 1 %>
+  of
+  <%= @total %></h1>
 <p id="question"><%= @question.text %></p>
 
 <%= form_tag({:controller => "quiz", :action => "answer"}) do %>
-  <% @choices.each do |choice| %>
-	 <p class="choice">
-		<%= radio_button_tag(:choice, choice.id) %>
-		<%= label_tag("choice_".concat(choice.id.to_s).to_sym, choice.text) %>
-	 </p>
-  <% end %>
-  
-  <div class="center">
-	 <%= submit_tag("Continue", :class => "submit") %>
-  </div>
+<% index = 65 %>
+<% @choices.each do |choice| %>
+<p class="choice">
+  <% if @correct_array.size > 1 %>
+  <input type="hidden" id ="ans_amount" value="<%=@correct_array.size%>">
+  <input type="checkbox" name="choice[]" value="<%=choice.id%>" required=true>
+<% else %>
+  <input type="radio" name="choice[]" value="<%=choice.id%>" required=true>
+  <% end  %>
+  <%= label_tag("choice_".concat(choice.id.to_s).to_sym, index.chr+'. '+choice.text) %>
+  <% index += 1 %>
+</p>
+<% end %>
+<div class="center">
+  <%= submit_tag("Continue", :class => "submit") %>
+</div>
 <% end %>
 
 <% content_for(:title) do %>
-  Question <%= @current + 1 %> of <%= @total %>
+Question
+<%= @current + 1 %>
+of
+<%= @total %>
 <% end %>

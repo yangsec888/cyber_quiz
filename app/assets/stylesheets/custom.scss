@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-select";
@@ -35,6 +34,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
+  color: rgba(0,0,0,.5) !important;
+  font-family: 'Raleway', sans-serif !important;
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
@@ -50,28 +51,64 @@ h2 {
   color: #fff;
 }
 
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
 
-/* header */
-
-#logo {
-  float: left;
-  margin-right: 10px;
-  letter-spacing: -1px;
-  padding-top: 2px;
-  font-weight: bold;
+.button_p {
+  background: #dcc7e0;
+  background-image: -webkit-linear-gradient(top, #dcc7e0, #c977d9);
+  background-image: -moz-linear-gradient(top, #dcc7e0, #c977d9);
+  background-image: -ms-linear-gradient(top, #dcc7e0, #c977d9);
+  background-image: -o-linear-gradient(top, #dcc7e0, #c977d9);
+  background-image: linear-gradient(to bottom, #dcc7e0, #c977d9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  outline: none;
 }
 
-#logo:hover {
-  color: #fff;
+.button_p:hover {
+  background: #ba70cc;
+  background-image: -webkit-linear-gradient(top, #ba70cc, #ba91c2);
+  background-image: -moz-linear-gradient(top, #ba70cc, #ba91c2);
+  background-image: -ms-linear-gradient(top, #ba70cc, #ba91c2);
+  background-image: -o-linear-gradient(top, #ba70cc, #ba91c2);
+  background-image: linear-gradient(to bottom, #ba70cc, #ba91c2);
   text-decoration: none;
 }
 
-/* footer */
+/* header */
+.navbar-inverse {
+     background-color: #c388ce; //purple
+     border: none;
+}
 
+.nav.navbar-nav li a {
+   color: rgba(0,0,0,.5);
+ }
+
+.nav.navbar-nav li a:hover {
+ color: white;
+}
+
+#logo {
+  float: left;
+  margin-right: 20px;
+  letter-spacing: -1px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+
+/* footer */
 footer {
   margin-top: 45px;
   padding-top: 5px;

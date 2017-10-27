@@ -11,8 +11,8 @@ class UserMailer < ApplicationMailer
     puts "Total count: #{receivers.count}"
     get_dist_list
     cc = @notification['cyber_level_1_due']
-    #cc = ["yangli@ny.cmbchina.com"]
-    #receivers = ["yangli@ny.cmbchina.com"]
+    #cc = [""]
+    #receivers = [""]
     @url  = 'https://quiz.cmbnylab.com/'
     @url_training = 'https://quiz.cmbnylab.com/documents/index'
     sbj = 'Cybersecurity Quiz Reminder'
