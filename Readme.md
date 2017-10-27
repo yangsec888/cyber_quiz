@@ -44,7 +44,7 @@ $ rake db:seed
 $ rails server
 ```
 
-It would be also easy to deploy the application on cloud, and here is a detailed instruction based on [Heroku](https://www.heroku.com) and [GitHub](https://github.com). We will do it using the web dashboard for these inexperienced userS, but if you are a IT specialist, it is your call.
+It would be also easy to deploy the application on cloud, and here is a detailed instruction based on [Heroku](https://www.heroku.com) and [GitHub](https://github.com). We will do it using the web dashboard for these inexperienced user, but if you are a IT specialist, it is your call.
 
 Of course, you need to register a [GitHub](https://github.com) account and a [Heroku](https://www.heroku.com) account first.
  1. Login you GitHub account, start a project, enter Repository name and Description (optional).
