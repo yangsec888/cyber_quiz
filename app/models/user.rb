@@ -1,3 +1,12 @@
+#--
+# cyber_quiz
+#
+# A  Ruby application for enterprise online quiz management solution
+#
+# Developed by Yang Li, Kainan Zhang. Creative Common License
+#
+#++
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

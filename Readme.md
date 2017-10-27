@@ -1,6 +1,6 @@
 # Online Quiz
 
-Online Quiz is a ruby on rails web application originally developed for cyber security awareness training, and may also be used for other examination.
+OWASP Quiz is a ruby on rails web application originally developed for cyber security awareness training, and may also be used for other examination.
 
   - Easy Deploy
   - Customization
@@ -8,7 +8,9 @@ Online Quiz is a ruby on rails web application originally developed for cyber se
 
 # Features!
 Quiz Candidate:
-  - Two default examination, Cyber Security Awareness & OWASP Top 10 Threats and Mitigations
+  - Default 2 level examination database, i.e.
+      - Cyber Security Awareness
+      - OWASP Top 10 Threats and Mitigations
   - Download training document via Doc
 
 Admin User:
@@ -29,11 +31,11 @@ Online Quiz uses a number of open source projects to work properly:
 
 And of course Online Quiz itself is open source with a [cyber_quiz] on GitHub.
 
-### Installation
+### Local Installation
 
 Online Quiz requires [Ruby on Rails](http://rubyonrails.org) v4.2+ and [Mysql](https://www.mysql.com/cn/) database to run.
 
-Install the dependencies and devDependencies then run the database and server.
+Install the environment dependencies, and ensure the database server is running. For example, in our Linux / Mac laptop,
 
 ```sh
 $ cd cyber_quiz
@@ -44,9 +46,12 @@ $ rake db:seed
 $ rails server
 ```
 
-It would be also easy to deploy the application on cloud, and here is a detailed instruction based on [Heroku](https://www.heroku.com) and [GitHub](https://github.com). We will do it using the web dashboard for these inexperienced user, but if you are a IT specialist, it is your call.
+### Free Cloud Deployment
 
-Of course, you need to register a [GitHub](https://github.com) account and a [Heroku](https://www.heroku.com) account first.
+It would be also easy to deploy the application to cloud. Here are the example based on [Heroku](https://www.heroku.com) and [GitHub](https://github.com). You can use your favorite repository and web hosting service. For the benefit of the most users, we will do it using the web dashboard for those non technical sophisticate users.  But if you are a IT specialist, it is your call to fly in CLI mode.
+
+Our Example:
+First of all, you need to register a [GitHub](https://github.com) account and a [Heroku](https://www.heroku.com) account first.
  1. Login you GitHub account, start a project, enter Repository name and Description (optional).
  2. Choose import code from another repository, enter Your old repository’s clone URL with "https://github.com/yangsec888/cyber_quiz.git" which is the web URL of Online Quiz on the GitHub. You can also visit it on the GitHub and see the URL via "Clone or Download" button.
  3. Click begin import and wait until GitHub showing "Importing complete! Your new repository XXX/YYY is ready." For now you already have stored the source codes on your own GitHub.
@@ -64,9 +69,9 @@ Of course, you need to register a [GitHub](https://github.com) account and a [He
 * Add [key]DATABASE_URL => [value] same value as CLEARDB_DATABASE_URL
 11. Finally, Go back to Deploy tab and click Deploy Branch "master" in manually at the bottom. Once deploy, you can open your Online Quiz App to examine. *Congratulations!*
 
-### Notice & How to use
+### Usage
 There are several things you need to do&know before you publish your quiz.
-1. Use the default local admin username:'admin', password:'3*l2LMb@!#153' to login. We DO NOT support user Register/Signin function temporarily, because previously we designed the website user database auto-connecting to our Active Directory Server. For security consideration, you could change the username and password by editing the local_admin.yml file in config folder.
+1. Use the default local admin username:'admin', password:'owasp123' to login. We DO NOT support user Register/Signin function temporarily, because previously we designed the website user database auto-connecting to our Active Directory Server. For security consideration, you could change the username and password by editing the local_admin.yml file in config folder.
 2. After you login, you can access all the functions in admin tab -> Menu
 * New Question - add your own question
 * Question List - show／modify questions and set question variable
@@ -80,10 +85,10 @@ There are several things you need to do&know before you publish your quiz.
 
 ### Todos
 
- - Write MORE Tests
+ - Write MORE (unit, deployment) tests
  - Add MORE Functions
  - Enhance Performance
- - Fix Unknown Bugs
+ - Fix Bugs!
 
 License
 ----

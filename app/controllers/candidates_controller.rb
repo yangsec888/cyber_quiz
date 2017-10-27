@@ -1,3 +1,12 @@
+#--
+# cyber_quiz
+#
+# A  Ruby application for enterprise online quiz management solution
+#
+# Developed by Yang Li, Kainan Zhang. Creative Common License
+#
+#++
+
 class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:show, :update, :destroy]
   skip_before_action :verify_authenticity_token

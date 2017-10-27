@@ -7,7 +7,7 @@
 #
 default: &default
   username: admin
-  password: 3*l2LMb@!#153    # minimum 8 chars
+  password: owasp123    # minimum 8 chars
   email: admin@test.com
 
 # Development environment
