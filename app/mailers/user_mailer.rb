@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'no_reply@quiz.cmbnylab.com'
+  default from: 'yang.li@owasp.org'
 
   def get_dist_list
     notification_yml = Rails.root.join('config', 'notification.yml')

@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "cybersecurity@ny.cmbchina.com"
+  default from: "yang.li@owasp.org"
   layout 'mailer'
 end

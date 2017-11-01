@@ -3,7 +3,8 @@
 #
 # A  Ruby application for enterprise online quiz management solution
 #
-# Copyright (c)  CMBNY Risk Department
+# Developed by Yang Li, Kainan Zhang. Creative Common License
+#
 #++
 
 class ReporterController < ApplicationController
