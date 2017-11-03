@@ -1,3 +1,4 @@
+# (GitHub-Flavored) Markdown Editor
 # Online Quiz
 
 OWASP Quiz is a ruby on rails web application originally developed for cyber security awareness training, and may also be used for other examination.
@@ -69,6 +70,14 @@ First of all, you need to register a [GitHub](https://github.com) account and a 
 * Add [key]DATABASE_URL => [value] same value as CLEARDB_DATABASE_URL
 11. Finally, Go back to Deploy tab and click Deploy Branch "master" in manually at the bottom. Once deploy, you can open your Online Quiz App to examine. *Congratulations!*
 
+##### Issues with Heroku
+
+Unfortunately, due to Heroku's ephemeral file system (https://devcenter.heroku.com/articles/dynos#ephemeral_filesystem) you won't be able to store files on Heroku, which causes:
+
+1. 	neither uploading nor downloading documents is available.
+2. 	although you can synchronize candidates list with database, you cannot save the updated list.
+3. 	question setting would be temporarily effective 
+
 ### Usage
 There are several things you need to do&know before you publish your quiz.
 1. Use the default local admin username:'admin', password:'owasp123' to login. We DO NOT support user Register/Signin function temporarily, because previously we designed the website user database auto-connecting to our Active Directory Server. For security consideration, you could change the username and password by editing the local_admin.yml file in config folder.
@@ -103,3 +112,5 @@ https://creativecommons.org/licenses/
    [jQuery]: <http://jquery.com>
    [Ruby on Rails]: <http://rubyonrails.org>
    [devise]: <https://github.com/plataformatec/devise>
+
+
