@@ -67,5 +67,4 @@ production:
   database:   quiz
   #username:  <%= ENV['MYSQL_USER'] %>
   username:   quiz
-  #password:  <%= ENV['MYSQL_TEST_DATABASE_PASSWORD'] %>
-  password:   quiz!@#
+  password:  <%= ENV['MYSQL_TEST_DATABASE_PASSWORD'] %>
