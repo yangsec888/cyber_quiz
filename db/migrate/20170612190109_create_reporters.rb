@@ -1,4 +1,4 @@
-class CreateReporters < ActiveRecord::Migration
+class CreateReporters < ActiveRecord::Migration[5.1]
   def change
     create_table :reporters do |t|
 	  t.string :candidate

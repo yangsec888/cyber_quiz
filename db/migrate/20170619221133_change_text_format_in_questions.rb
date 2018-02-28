@@ -1,4 +1,4 @@
-class ChangeTextFormatInQuestions < ActiveRecord::Migration
+class ChangeTextFormatInQuestions < ActiveRecord::Migration[5.1]
     def self.up
         change_column :questions, :text, :text
     end

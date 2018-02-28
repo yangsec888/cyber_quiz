@@ -15,7 +15,31 @@
       }
     });
   });
+
+  function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+  }
+
 </script>
+
+<div class="row">
+
+  <script type="text/javascript">
+    document.write(getCookie("session_id") + " -- our session cookie value");
+  </script>
+</div>
 
 <h1>Question
   <%= @current + 1 %>

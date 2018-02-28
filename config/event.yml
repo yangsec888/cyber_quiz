@@ -2,5 +2,5 @@
 event:
   :name: Demo
   :date: 
-  :passline: '60'
+  :passline: '80'
   :questions: '10'

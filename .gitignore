@@ -1,0 +1,8 @@
+# ignore all tmp 
+tmp/**
+**/tmp
+
+# ignore cache file
+*.cache
+
+

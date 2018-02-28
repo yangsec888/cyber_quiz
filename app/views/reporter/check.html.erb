@@ -14,10 +14,10 @@ function toggle(source) {
 <h1>Check Unrecorded Users</h1>
 
 <%= form_tag({:controller => "reporter", :action => "check"}, :method => 'get') do %>
-  	Category: <%= select(:category, nil, Question.distinct.pluck(:category), {:include_blank =>false},
+  	Category: <%= select(:category, nil, Question.distinct.pluck(:category), {:include_blank =>true},
   	 {:class => "selectpicker", "data-style" => "btn-default", required: true}) %>
      &nbsp;
-    EventId: <%= select(:eventid, nil, Reporter.distinct.pluck(:quiz_eventid), {:include_blank =>false},
+    EventId: <%= select(:eventid, nil, Reporter.distinct.pluck(:quiz_eventid), {:include_blank =>true},
    	 {:class => "selectpicker", "data-style" => "btn-default", required: true}) %>
   	<%= submit_tag "Check", :class => "btn btn-default"%>
 <% end %>

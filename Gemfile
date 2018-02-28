@@ -1,10 +1,12 @@
 source 'http://rubygems.org'
 #gem 'rails' #, '3.0.5'
 # cyber_quiz specific rails dependency below
-gem 'rails', '~> 4.2.8'
+gem 'rails', '~> 5.1.4'
+gem 'puma', '~> 3.7'
+#gem 'rails', '~> 4.2.8'
+#gem 'unicorn'
 gem 'jquery-rails'
-gem 'unicorn'
-gem 'devise', '~> 4.2.0'
+gem 'devise'
 gem "devise_ldap_authenticatable"
 gem 'server-generated-popups'
 gem 'responders'
@@ -15,7 +17,7 @@ gem 'responders'
 #gem 'sqlite3', '~> 1.3.6'
 gem 'mysql2', '~> 0.3.18'
 
-# fix cookie overflow error
+# Store user sessions in the database - fix cookie size limit / overflow error
 gem 'activerecord-session_store'
 
 # Use unicorn as the web server
@@ -42,15 +44,17 @@ gem 'activerecord-session_store'
 # end
 
 #Attributes protected and some other Rails 3 features
-gem 'protected_attributes'
-gem 'activeresource' # https://github.com/rails/activeresource
+#gem 'protected_attributes'
+gem 'activemodel', '~>5.1.4'
+gem 'activeresource', '~>5.0.0'# https://github.com/rails/activeresource
 gem 'actionpack-action_caching' # https://github.com/rails/actionpack-action_caching
-gem 'rails-observers' # https://github.com/rails/rails-observers
+#gem 'rails-observers' # https://github.com/rails/rails-observers
 
+# Dalli is a high performance pure Ruby client for accessing memcached servers
 gem 'dalli'
 # Remember to update any gems that require something special in order to work with Rails 4
-gem 'squeel', :git => "https://github.com/ernie/squeel.git"
-gem "ransack", :git => "https://github.com/ernie/ransack.git", :branch => 'rails-4'
+#gem 'squeel', :git => "https://github.com/ernie/squeel.git"
+#gem "ransack", :git => "https://github.com/ernie/ransack.git", :branch => 'rails-4'
 gem 'simple_form', :git => 'https://github.com/plataformatec/simple_form.git'
 
 # group :assets <--- this needs to go away
