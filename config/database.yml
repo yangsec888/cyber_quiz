@@ -65,7 +65,5 @@ test:
 production:
   <<:         *default
   database:   cyber_quiz_production
-  #username:  <%= ENV['MYSQL_USER'] %>
   username:   cyber_quiz
-  #password:  <%= ENV['MYSQL_TEST_DATABASE_PASSWORD'] %>
-  password:   cyber_quiz!@#
+  password:  <%= ENV['QUIZ_DATABASE_PASSWORD'] %>

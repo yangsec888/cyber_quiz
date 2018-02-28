@@ -8,7 +8,7 @@
 #++
 
 class CandidatesController < ApplicationController
-  before_action :set_candidate, only: [:show, :update, :destroy]
+  before_action :set_candidate, only: %i[show update destroy]
   skip_before_action :verify_authenticity_token
 
   # GET /candidates
@@ -53,8 +53,8 @@ class CandidatesController < ApplicationController
       Candidate.create(name: name, email: email, status: true)
     end
     redirect_to reporter_list_path, notice: 'The list file has been synchronized.'
-  rescue
-    redirect_to reporter_list_path, alert: 'Synchronization failed, please check candidate file.'
+  rescue StandardError => e
+    redirect_to reporter_list_path, alert: e.to_s
   end
 
   def refresh
@@ -65,7 +65,7 @@ class CandidatesController < ApplicationController
       list.length == temp ? candidate.update(status: false) : candidate.update(status: true)
     end
     list.each do |user|
-      Candidate.create!(name: user['en_name'], email: user['email'], status: true ) unless user['email'].nil?
+      Candidate.create!(name: user['en_name'], email: user['email'], status: true) unless user['email'].nil?
     end
     head :ok
   end
@@ -85,5 +85,4 @@ class CandidatesController < ApplicationController
   def json_response(object, status = :ok)
     render json: object, status: status
   end
-
 end
