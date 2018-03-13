@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   attr_accessor :login
   # for client side validations
   validates :username, :password, presence: true
-  validates_format_of :username, :with => /\A[a-z]+[0-9]*\z/i, :allow_blank => true, :message => "Your CMBNY Domain ID should contain letters and numbers only."
+  validates_format_of :username, :with => /\A[a-z]+[0-9]*\z/i, :allow_blank => true, :message => "Your ID should contain letters and numbers only."
   validates_length_of :password, :minimum => 8, :allow_blank => true
 
   # refer to the smaple at: https://github.com/RailsApps/rails-devise-roles
